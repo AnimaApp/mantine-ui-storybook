@@ -4,35 +4,37 @@
   "private": true,
   "scripts": {
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "dependencies": {
-    
+    "@storybook/storybook-deployer": "^2.8.16",
+    "storybook-deploy": "^0.1.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.20.2",
     "@emotion/react": "11.10.4",
     "@mantine/core": "5.4.1",
     "@mantine/dates": "5.4.1",
     "@mantine/hooks": "5.4.1",
-    "@tabler/icons": "1.101.0",
-    "dayjs": "^1.11.5",
-    "storybook": "^6.5.13",
-    "@babel/core": "^7.20.2",
     "@storybook/addon-actions": "^6.5.13",
     "@storybook/addon-essentials": "^6.5.13",
     "@storybook/addon-interactions": "^6.5.13",
     "@storybook/addon-links": "^6.5.13",
+    "@storybook/addons": "^6.4.0",
+    "@storybook/api": "^6.4.0",
     "@storybook/builder-webpack4": "^6.5.13",
+    "@storybook/components": "^6.4.0",
+    "@storybook/core-events": "^6.4.0",
     "@storybook/manager-webpack4": "^6.5.13",
     "@storybook/react": "^6.5.13",
     "@storybook/testing-library": "^0.0.13",
-    "babel-loader": "^8.3.0",
-    "@storybook/addons": "^6.4.0",
-    "@storybook/api": "^6.4.0",
-    "@storybook/components": "^6.4.0",
-    "@storybook/core-events": "^6.4.0",
     "@storybook/theming": "^6.4.0",
+    "@tabler/icons": "1.101.0",
+    "babel-loader": "^8.3.0",
+    "dayjs": "^1.11.5",
     "react": "^16.8.0 || ^17.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0"
+    "react-dom": "^16.8.0 || ^17.0.0",
+    "storybook": "^6.5.13"
   }
 }
