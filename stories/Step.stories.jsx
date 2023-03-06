@@ -26,6 +26,7 @@ export default {
     },
     withIcon: { description: "With Icon", type: "number" },
     label: { description: "Label", type: "string" },
+    description: { description: "Description", type: "string" },
   },
 };
 
@@ -38,7 +39,7 @@ const Template = (args) => {
       state={args.state}
       withIcon={args.withIcon}
       label={args.label}
-    //add description prop
+      description={args.description}
     >
       {args.label}
     </MantineCore.Stepper.Step>
@@ -48,12 +49,13 @@ const Template = (args) => {
 export const SimpleStep = Template.bind({});
 
 SimpleStep.args = {
-  allowStepClick: false,
+  allowStepClick: true,
   orientation: "horizontal",
   size: "md",
   state: "stepProgress",
   withIcon: 20,
   label: "Label",
+  description: "Description"
 };
 
 SimpleStep.storyInfo = {

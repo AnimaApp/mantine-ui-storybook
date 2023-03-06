@@ -1,6 +1,5 @@
 import React from "react";
 import * as MantineCore from "@mantine/core";
-import { ColorInput } from "@mantine/core";
 import { iconOptions, iconTransform } from "../utils";
 import withIconMapped from "../decorators/withIconMapped";
 
@@ -41,7 +40,7 @@ export default {
     withPicker: { description: "With picker", type: "boolean" },
     withPreview: { description: "With preview", type: "boolean" },
     withinPortal: { description: "Within portal", type: "boolean" },
-    swatches: { description: "Swatches", type: "string" },
+    swatches: { description: "Swatches", type: "boolean"},
     swatchesPerRow: { description: "Swatches per row", type: "number" },
     defaultValue: { description: "Default value", type: "string" },
     variant: {
@@ -54,6 +53,7 @@ export default {
   decorators: [withIconMapped],
 };
 
+const colorSwatches = ['#25262b', '#868e96', '#fa5252', '#e64980', '#be4bdb', '#7950f2', '#4c6ef5'];
 const Template = (args) => {
   const [value, setValue] = React.useState(args.defaultValue);
 
@@ -73,7 +73,7 @@ const Template = (args) => {
       withPicker={args.withPicker}
       withPreview={args.withPreview}
       withinPortal={args.withinPortal}
-      swatches={args.swatches}
+      swatches={args.swatches && colorSwatches}
       swatchesPerRow={args.swatchesPerRow}
       variant={args.variant}
       style={{ width: args.width }}

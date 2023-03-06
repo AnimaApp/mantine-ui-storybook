@@ -13,6 +13,7 @@ export default {
     },
   },
   argTypes: {
+    label: {description: "Label", type: "string"},
     orientation: {
       description: "Orientation",
       control: { type: "select" },
@@ -31,6 +32,7 @@ export default {
     description: { description: "Description", type: "string" },
     error: { description: "Error", type: "string" },
     value: { description: "Value", type: "string" },
+    withAsterisk: {description: "With Asterisk", type: "boolean"},
     item: {
       type: "story",
       description: "item",
@@ -54,6 +56,8 @@ const Template = (args) => {
 
   return (
     <MantineCore.Checkbox.Group
+      label={args.label}
+      withAsterisk={args.withAsterisk}
       value={value}
       onChange={setValue}
       orientation={args.orientation}
@@ -72,6 +76,8 @@ const Template = (args) => {
 export const SimpleCheckboxGroup = Template.bind({});
 
 SimpleCheckboxGroup.args = {
+  label: "Label",
+  withAsterisk: false,
   orientation: "horizontal",
   offset: "md",
   spacing: "md",

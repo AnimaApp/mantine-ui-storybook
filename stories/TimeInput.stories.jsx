@@ -70,8 +70,8 @@ export const SimpleTimeInput = Template.bind({});
 
 SimpleTimeInput.args = {
   label: "Label",
-  placeholder: "",
-  description: "",
+  placeholder: "Placeholder",
+  description: "Description",
   error: "",
   disabled: false,
   required: false,

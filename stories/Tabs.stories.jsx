@@ -1,6 +1,5 @@
 import React from "react";
 import * as MantineCore from "@mantine/core";
-import { SimpleTab } from "./Tab.stories";
 
 export default {
   title: "Mantine UI/Tabs",
@@ -28,19 +27,24 @@ export default {
     item: {
       type: "story",
       description: "item",
-      storyInfo: SimpleTab.storyInfo,
     },
     item2: {
       type: "story",
       description: "item",
-      storyInfo: SimpleTab.storyInfo,
     },
     item3: {
       type: "story",
       description: "item",
-      storyInfo: SimpleTab.storyInfo,
     },
   },
+};
+
+const SimpleTab = (args) => {
+  return (
+    <MantineCore.Tabs.Tab value={args.value} icon={args.iconName}>
+      {args.label}
+    </MantineCore.Tabs.Tab>
+  );
 };
 
 const Template = (args) => {

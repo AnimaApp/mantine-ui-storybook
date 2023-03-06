@@ -82,7 +82,7 @@ export const SimpleNumberInput = Template.bind({});
 SimpleNumberInput.args = {
   label: "Label",
   placeholder: "",
-  description: "",
+  description: "Description",
   error: "",
   disabled: false,
   required: false,
@@ -96,4 +96,5 @@ SimpleNumberInput.args = {
   hideControls: false,
   width: "300px",
   defaultValue: 2,
+  iconWidth: 30,
 };

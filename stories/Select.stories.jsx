@@ -19,7 +19,6 @@ export default {
     error: { description: "Error", type: "string" },
     disabled: { description: "Disabled", type: "boolean" },
     required: { description: "Required", type: "boolean" },
-    allowDeselect: { description: "Allow deselect", type: "boolean" },
     clearable: { description: "Clearable", type: "boolean" },
     initiallyOpened: { description: "Initially opened", type: "boolean" },
     dropdownPosition: {
@@ -93,7 +92,6 @@ const Template = (args) => {
       error={args.error}
       disabled={args.disabled}
       required={args.required}
-      allowDeselect={args.allowDeselect}
       clearable={args.clearable}
       initiallyOpened={args.initiallyOpened}
       dropdownPosition={args.dropdownPosition}
@@ -118,7 +116,6 @@ SimpleSelect.args = {
   error: "",
   disabled: false,
   required: false,
-  allowDeselect: false,
   clearable: false,
   initiallyOpened: false,
   dropdownPosition: "bottom",

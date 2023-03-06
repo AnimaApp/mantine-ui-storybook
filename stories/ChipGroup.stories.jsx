@@ -13,11 +13,6 @@ export default {
     },
   },
   argTypes: {
-    offset: {
-      description: "Offset",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
-    },
     spacing: {
       description: "Spacing",
       control: { type: "select" },
@@ -55,7 +50,6 @@ const Template = (args) => {
     <MantineCore.Chip.Group
       value={value}
       onChange={setValue}
-      offset={args.offset}
       spacing={args.spacing}
       multiple={args.multiple}
       position={args.position}
@@ -69,7 +63,6 @@ const Template = (args) => {
 export const SimpleChipGroup = Template.bind({});
 
 SimpleChipGroup.args = {
-  offset: "md",
   spacing: "md",
   multiple: false,
   position: "left",
