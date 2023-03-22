@@ -1,6 +1,5 @@
 import React from "react";
 import * as MantineCore from "@mantine/core";
-import { SimpleStep } from "./Step.stories";
 
 export default {
   title: "Mantine UI/Stepper",
@@ -28,36 +27,57 @@ export default {
     item: {
       type: "story",
       description: "item",
-      storyInfo: SimpleStep.storyInfo,
     },
     item2: {
       type: "story",
       description: "item",
-      storyInfo: SimpleStep.storyInfo,
     },
     item3: {
       type: "story",
       description: "item",
-      storyInfo: SimpleStep.storyInfo,
     },
   },
 };
 
+const styleText = {
+  display: "flex",
+  justifyContent: "center"
+};
+
 const Template = (args) => {
-  const [active, setActive] = React.useState(args.active);
+  const [active, setActive] = React.useState(1);
+  const nextStep = () => setActive((current) => (current < 3 ? current + 1 : current));
+  const prevStep = () => setActive((current) => (current > 0 ? current - 1 : current));
+
 
   return (
-    <MantineCore.Stepper
-      iconPosition={args.iconPosition}
-      iconSize={args.iconSize}
-      size={args.size}
-      radius={args.radius}
-      active={active}
-    >
-      <SimpleStep {...args.item} />
-      <SimpleStep {...args.item2} />
-      <SimpleStep {...args.item3} />
-    </MantineCore.Stepper>
+    <>
+      <MantineCore.Stepper
+        iconPosition={args.iconPosition}
+        iconSize={args.iconSize}
+        size={args.size}
+        radius={args.radius}
+        active={active}
+        onStepClick={setActive}
+      >
+        <MantineCore.Stepper.Step {...args.item}>
+          <div style={styleText}>{args.item.text}</div>
+        </MantineCore.Stepper.Step>
+        <MantineCore.Stepper.Step {...args.item2}>
+          <div style={styleText}>{args.item2.text}</div>
+        </MantineCore.Stepper.Step>
+        <MantineCore.Stepper.Step {...args.item3}>
+          <div style={styleText}>{args.item3.text}</div>
+        </MantineCore.Stepper.Step>
+        <MantineCore.Stepper.Completed>
+          <div style={styleText}>{args.item4.text}</div>
+        </MantineCore.Stepper.Completed>
+      </MantineCore.Stepper>
+      <MantineCore.Group position="center" mt="xl">
+        <MantineCore.Button variant="default" onClick={prevStep}>Back</MantineCore.Button>
+        <MantineCore.Button onClick={nextStep}>Next step</MantineCore.Button>
+      </MantineCore.Group>
+    </>
   );
 };
 
@@ -65,20 +85,26 @@ export const SimpleStepper = Template.bind({});
 
 SimpleStepper.args = {
   iconPosition: "left",
-  iconSize: 20,
+  iconSize: 40,
   size: "md",
-  radius: "md",
+  radius: "xl",
   active: 1,
   item: {
-    ...SimpleStep.args,
     label: "Step 1",
+    description: "description",
+    text: "Step 1 content: Create an account",
   },
   item2: {
-    ...SimpleStep.args,
     label: "Step 2",
+    description: "description",
+    text: "Step 2 content: Verify email",
   },
   item3: {
-    ...SimpleStep.args,
     label: "Step 3",
+    description: "description",
+    text: "Step 3 content: Get full access",
+  },
+  item4: {
+    text: "Completed, click back button to get to previous step",
   },
 };

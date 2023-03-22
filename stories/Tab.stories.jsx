@@ -31,9 +31,12 @@ export default {
 
 const Template = (args) => {
   return (
-    <MantineCore.Tabs.Tab value={args.value} icon={args.iconName}>
-      {args.label}
-    </MantineCore.Tabs.Tab>
+    <MantineCore.Tabs>
+      <MantineCore.Tabs.Tab value={args.value} icon={args.iconName}>
+        {args.label}
+      </MantineCore.Tabs.Tab>
+    </MantineCore.Tabs>
+
   );
 };
 

@@ -34,6 +34,7 @@ export default {
 const Template = (args) => {
   return (
     <MantineCore.Avatar
+      alt={args.src? " " : "no image here"}
       size={args.size}
       src={args.src}
       variant={args.variant}

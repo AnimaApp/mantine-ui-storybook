@@ -32,7 +32,6 @@ export default {
       transform: iconTransform,
       required: false,
     },
-    iconWidth: { description: "Icon width", type: "number" },
     variant: {
       description: "Variant",
       control: { type: "select" },
@@ -58,7 +57,6 @@ const Template = (args) => {
       required={args.required}
       size={args.size}
       icon={args.iconName}
-      iconWidth={args.iconWidth}
       variant={args.variant}
       style={{ width: args.width }}
     />
@@ -69,13 +67,12 @@ export const SimplePasswordInput = Template.bind({});
 
 SimplePasswordInput.args = {
   label: "Label",
-  placeholder: "",
+  placeholder: "Placeholder",
   description: "",
   error: "",
   disabled: false,
   required: false,
   size: "md",
-  iconWidth: 20,
   variant: "default",
   width: "300px",
 };

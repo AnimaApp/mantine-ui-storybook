@@ -22,14 +22,16 @@ export default {
 
 const Template = (args) => {
   return (
-    <MantineCore.Accordion.Item value={args.value}>
-      <MantineCore.Accordion.Control>
-        {args.title}
-      </MantineCore.Accordion.Control>
-      <MantineCore.Accordion.Panel>
-        {args.description}
-      </MantineCore.Accordion.Panel>
-    </MantineCore.Accordion.Item>
+    <MantineCore.Accordion>
+      <MantineCore.Accordion.Item value={args.value}>
+        <MantineCore.Accordion.Control>
+          {args.title}
+        </MantineCore.Accordion.Control>
+        <MantineCore.Accordion.Panel>
+          {args.description}
+        </MantineCore.Accordion.Panel>
+      </MantineCore.Accordion.Item>
+    </MantineCore.Accordion>
   );
 };
 

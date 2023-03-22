@@ -41,8 +41,7 @@ export const SimpleSwitch = Template.bind({});
 SimpleSwitch.args = {
   label: "Label",
   offLabel: "",
-  onLabel: "",
-  label: "Label",
+  onLabel: "onLabel",
   size: "md",
   // thumbIcon: to do
 };

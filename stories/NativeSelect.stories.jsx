@@ -64,7 +64,7 @@ const Template = (args) => {
       icon={args.iconName}
       iconWidth={args.iconWidth}
       variant={args.variant}
-      data={args.data}
+      data={data}
       style={{ width: args.width }}
     />
   );
@@ -81,7 +81,6 @@ SimpleNativeSelect.args = {
   required: false,
   size: "md",
   variant: "filled",
-  data: data,
   width: "300px",
   defaultValue: "React",
 };

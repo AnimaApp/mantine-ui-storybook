@@ -3,6 +3,9 @@ import * as MantineCore from "@mantine/core";
 import { iconOptions, iconTransform } from "../utils";
 import withIconMapped from "../decorators/withIconMapped";
 
+/*
+* Decorator ????
+* */
 export default {
   title: "Mantine UI/Autocomplete",
   component: MantineCore.Autocomplete,
@@ -51,7 +54,12 @@ export default {
   decorators: [withIconMapped],
 };
 
-const data = ["React", "Angular", "Svelte", "Vue"];
+const data = [
+  {value:"React"},
+  {value:"Angular"},
+  {value:"Svelte"},
+  {value:"Vue"},
+];
 
 const Template = (args) => {
   const [value, setValue] = React.useState(args.defaultValue);

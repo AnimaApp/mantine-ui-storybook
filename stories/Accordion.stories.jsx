@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import * as MantineCore from "@mantine/core";
-import { SimpleAccordionItem } from "./AccordionItem.stories";
 
 export default {
   title: "Mantine UI/Accordion",
@@ -24,25 +23,34 @@ export default {
       control: { type: "select" },
       options: ["default", "contained", "filled", "separated"],
     },
-    multiple: { description: "Multiple", type: "boolean" },
     value: { description: "Value", type: "string" },
     width: { description: "Width", type: "string" },
     item: {
       type: "story",
       description: "item",
-      storyInfo: SimpleAccordionItem.storyInfo,
     },
     item2: {
       type: "story",
       description: "item",
-      storyInfo: SimpleAccordionItem.storyInfo,
     },
     item3: {
       type: "story",
       description: "item",
-      storyInfo: SimpleAccordionItem.storyInfo,
     },
   },
+};
+
+const AccordionItem = (args) => {
+  return (
+    <MantineCore.Accordion.Item value={args.value}>
+      <MantineCore.Accordion.Control>
+        {args.title}
+      </MantineCore.Accordion.Control>
+      <MantineCore.Accordion.Panel>
+        {args.description}
+      </MantineCore.Accordion.Panel>
+    </MantineCore.Accordion.Item>
+  )
 };
 
 const Template = (args) => {
@@ -53,14 +61,13 @@ const Template = (args) => {
       chevronPosition={args.chevronPosition}
       chevronSize={args.chevronSize}
       variant={args.variant}
-      multiple={args.multiple}
       value={value}
       onChange={setValue}
       style={{ width: args.width }}
     >
-      <SimpleAccordionItem {...args.item} />
-      <SimpleAccordionItem {...args.item2} />
-      <SimpleAccordionItem {...args.item3} />
+      <AccordionItem {...args.item} />
+      <AccordionItem {...args.item2} />
+      <AccordionItem {...args.item3} />
     </MantineCore.Accordion>
   );
 };
@@ -71,23 +78,22 @@ SimpleAccordion.args = {
   chevronPosition: "right",
   chevronSize: 20,
   variant: "default",
-  multiple: false,
   value: "acc1",
   width: "340px",
   item: {
-    ...SimpleAccordionItem.args,
+    ...AccordionItem.args,
     value: "acc1",
     title: "Title 1",
     description: "Description 1",
   },
   item2: {
-    ...SimpleAccordionItem.args,
+    ...AccordionItem.args,
     value: "acc2",
     title: "Title 2",
     description: "Description 2",
   },
   item3: {
-    ...SimpleAccordionItem.args,
+    ...AccordionItem.args,
     value: "acc3",
     title: "Title 3",
     description: "Description 3",

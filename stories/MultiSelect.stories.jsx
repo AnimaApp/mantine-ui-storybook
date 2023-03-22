@@ -20,7 +20,6 @@ export default {
     disabled: { description: "Disabled", type: "boolean" },
     required: { description: "Required", type: "boolean" },
     clearable: { description: "Clearable", type: "boolean" },
-    initiallyOpened: { description: "Initially opened", type: "boolean" },
     dropdownPosition: {
       description: "Dropdown position",
       control: { type: "select" },
@@ -78,7 +77,6 @@ const Template = (args) => {
       disabled={args.disabled}
       required={args.required}
       clearable={args.clearable}
-      initiallyOpened={args.initiallyOpened}
       dropdownPosition={args.dropdownPosition}
       limit={args.limit}
       maxDropdownHeight={args.maxDropdownHeight}
@@ -103,7 +101,6 @@ SimpleMultiSelect.args = {
   disabled: false,
   required: false,
   clearable: false,
-  initiallyOpened: false,
   dropdownPosition: "bottom",
   limit: 100,
   maxDropdownHeight: 400,

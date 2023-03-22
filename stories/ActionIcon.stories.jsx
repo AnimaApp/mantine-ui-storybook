@@ -34,7 +34,6 @@ export default {
       transform: iconTransform,
       required: false,
     },
-    iconSize: { description: "Icon size", type: "number" },
     size: {
       description: "Size",
       control: { type: "select" },
@@ -51,7 +50,6 @@ const Template = (args) => {
     <MantineCore.ActionIcon
       variant={args.variant}
       icon={args.iconName}
-      iconSize={args.iconSize}
       size={args.size}
       loading={args.loading}
       disabled={args.disabled}
@@ -66,7 +64,6 @@ export const SimpleActionIcon = Template.bind({});
 SimpleActionIcon.args = {
   variant: "default",
   iconName: "IconAdjustments",
-  iconSize: 20,
   size: "md",
   loading: false,
   disabled: false,

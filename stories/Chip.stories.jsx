@@ -19,7 +19,11 @@ export default {
       control: { type: "select" },
       options: ["xs", "sm", "md", "lg", "xl"],
     },
-    required: { description: "Required", type: "boolean" },
+    radius: {
+      description: "Radius",
+      control: { type: "select" },
+      options: ["xs", "sm", "md", "lg", "xl"],
+    },
     disabled: { description: "Disabled", type: "boolean" },
     variant: {
       description: "Variant",
@@ -35,7 +39,7 @@ const Template = (args) => {
     <MantineCore.Chip
       value={args.value}
       size={args.size}
-      required={args.required}
+      radius={args.radius}
       disabled={args.disabled}
       variant={args.variant}
     >
@@ -49,7 +53,7 @@ export const SimpleChip = Template.bind({});
 SimpleChip.args = {
   label: "Label",
   size: "md",
-  required: false,
+  radius: "xl",
   disabled: false,
   variant: "outline",
   value: "",
