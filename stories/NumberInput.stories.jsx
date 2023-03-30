@@ -27,21 +27,34 @@ export default {
     step: { description: "Step", type: "number" },
     size: {
       description: "Size",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     iconName: {
-      control: { type: "select" },
-      options: iconOptions,
       description: "Icon",
-      transform: iconTransform,
-      required: false,
+      control: {
+        type: "select",
+        options: iconOptions,
+        transform: iconTransform,
+        required: false,
+      },
     },
     iconWidth: { description: "Icon width", type: "number" },
     variant: {
       description: "Variant",
-      control: { type: "select" },
-      options: ["unstyled", "filled", "default"],
+      control: {
+        type: "select",
+        options: ["unstyled", "filled", "default"],
+      },
+    },
+    radius: {
+      description: "Radius",
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     hideControls: { description: "Hide controls", type: "boolean" },
     width: { description: "Width", type: "string" },
@@ -50,36 +63,21 @@ export default {
   decorators: [withIconMapped],
 };
 
-const Template = (args) => {
+export const Default = (args) => {
   const [value, setValue] = React.useState(args.defaultValue);
 
   return (
     <MantineCore.NumberInput
+      {...args}
       value={value}
       onChange={(val) => setValue(val)}
-      label={args.label}
-      placeholder={args.placeholder}
-      description={args.description}
-      error={args.error}
-      disabled={args.disabled}
-      required={args.required}
-      decimalSeparator={args.decimalSeparator}
-      precision={args.precision}
-      min={args.min}
-      max={args.max}
-      size={args.size}
       icon={args.iconName}
-      iconWidth={args.iconWidth}
-      variant={args.variant}
-      hideControls={args.hideControls}
       style={{ width: args.width }}
     />
   );
 };
 
-export const SimpleNumberInput = Template.bind({});
-
-SimpleNumberInput.args = {
+Default.args = {
   label: "Label",
   placeholder: "",
   description: "Description",
@@ -93,6 +91,7 @@ SimpleNumberInput.args = {
   step: 1,
   size: "md",
   variant: "default",
+  radius: "sm",
   hideControls: false,
   width: "300px",
   defaultValue: 2,

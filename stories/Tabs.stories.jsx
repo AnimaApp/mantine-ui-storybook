@@ -14,13 +14,17 @@ export default {
   argTypes: {
     variant: {
       description: "Variant",
-      control: { type: "select" },
-      options: ["outline", "default", "pills"],
+      control: {
+        type: "select",
+        options: ["outline", "default", "pills"],
+      },
     },
     orientation: {
       description: "Orientation",
-      control: { type: "select" },
-      options: ["horizontal", "vertical"],
+      control: {
+        type: "select",
+        options: ["horizontal", "vertical"],
+      },
     },
     value: { description: "Value", type: "string" },
     defaultValue: { description: "Default value", type: "string" },
@@ -39,7 +43,7 @@ export default {
   },
 };
 
-const SimpleTab = (args) => {
+const Tab = (args) => {
   return (
     <MantineCore.Tabs.Tab value={args.value} icon={args.iconName}>
       {args.label}
@@ -47,41 +51,38 @@ const SimpleTab = (args) => {
   );
 };
 
-const Template = (args) => {
+export const Default = (args) => {
   const [activeTab, setActiveTab] = React.useState(args.defaultValue);
 
   return (
     <MantineCore.Tabs
-      variant={args.variant}
-      orientation={args.orientation}
+      {...args}
       value={activeTab}
       onTabChange={setActiveTab}
     >
-      <SimpleTab {...args.item} />
-      <SimpleTab {...args.item2} />
-      <SimpleTab {...args.item3} />
+      <Tab {...args.item} />
+      <Tab {...args.item2} />
+      <Tab {...args.item3} />
     </MantineCore.Tabs>
   );
 };
 
-export const SimpleTabs = Template.bind({});
-
-SimpleTabs.args = {
+Default.args = {
   variant: "pills",
   orientation: "vertical",
   defaultValue: "tab1",
   item: {
-    ...SimpleTab.args,
+    ...Tab.args,
     value: "tab1",
     label: "Tab 1",
   },
   item2: {
-    ...SimpleTab.args,
+    ...Tab.args,
     value: "tab2",
     label: "Tab 2",
   },
   item3: {
-    ...SimpleTab.args,
+    ...Tab.args,
     value: "tab3",
     label: "Tab 3",
   },

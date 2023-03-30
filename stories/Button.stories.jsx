@@ -2,6 +2,7 @@ import React from "react";
 import * as MantineCore from "@mantine/core";
 import { iconOptions, iconTransform } from "../utils";
 import withIconMapped from "../decorators/withIconMapped";
+import { color } from "../src/colors/index"
 
 export default {
   title: "Mantine UI/Button",
@@ -17,43 +18,60 @@ export default {
   argTypes: {
     variant: {
       description: "Variant",
-      control: { type: "select" },
-      options: [
-        "outline",
-        "white",
-        "light",
-        "default",
-        "filled",
-        "subtle",
-        "gradient",
-      ],
+      control: {
+        type: "select",
+        options: [
+          "outline",
+          "white",
+          "light",
+          "default",
+          "filled",
+          "subtle",
+          "gradient",
+        ],
+      },
     },
     label: { description: "Label", type: "string" },
     size: {
       description: "Size",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     uppercase: { description: "Uppercase", type: "boolean" },
     loading: { description: "Loading", type: "boolean" },
     loaderPosition: {
       description: "Loader position",
-      control: { type: "select" },
-      options: ["left", "right"],
+      control: {
+        type: "select",
+        options: ["left", "right"],
+      },
     },
     leftIcon: {
-      control: { type: "select" },
-      options: iconOptions,
       description: "Left icon",
-      transform: iconTransform,
-      required: false,
+      control: {
+        type: "select",
+        options: iconOptions,
+        transform: iconTransform,
+        required: false,
+      },
     },
     rightIcon: {
-      control: { type: "select" },
-      options: iconOptions,
       description: "Right icon",
-      transform: iconTransform,
-      required: false,
+      control: {
+        type: "select",
+        options: iconOptions,
+        transform: iconTransform,
+        required: false,
+      },
+    },
+    color: {
+      description: "Color",
+      control: {
+        type: "select",
+        options: color,
+      },
     },
     compact: { description: "Compact", type: "boolean" },
     disabled: { description: "Disabled", type: "boolean" },
@@ -61,27 +79,17 @@ export default {
   decorators: [withIconMapped],
 };
 
-const Template = (args) => {
+export const Default = (args) => {
   return (
     <MantineCore.Button
-      variant={args.variant}
-      size={args.size}
-      uppercase={args.uppercase}
-      loading={args.loading}
-      loaderPosition={args.loaderPosition}
-      leftIcon={args.leftIcon}
-      rightIcon={args.rightIcon}
-      compact={args.compact}
-      disabled={args.disabled}
+      {...args}
     >
       {args.label}
     </MantineCore.Button>
   );
 };
 
-export const SimpleButton = Template.bind({});
-
-SimpleButton.args = {
+Default.args = {
   variant: "filled",
   label: "Label",
   size: "md",
@@ -90,9 +98,10 @@ SimpleButton.args = {
   loaderPosition: "left",
   compact: false,
   disabled: false,
+  color: "blue",
 };
 
-SimpleButton.storyInfo = {
-  name: "SimpleButton",
+Default.storyInfo = {
+  name: "Button",
   kind: "Mantine UI/Button",
 };

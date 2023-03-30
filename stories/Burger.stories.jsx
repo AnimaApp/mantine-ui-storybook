@@ -15,34 +15,34 @@ export default {
   argTypes: {
     size: {
       description: "Size",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     color: {
       description: "Color",
-      control: { type: "color" },
+      control: {
+        type: "color",
+      },
     },
     transitionDuration: { description: "Transition duration", type: "number" },
   },
 };
 
-const Template = (args) => {
+export const Default = (args) => {
   const [opened, { toggle }] = useDisclosure(args.opened);
 
   return (
     <MantineCore.Burger
       opened={opened}
-      size={args.size}
-      transitionDuration={args.transitionDuration}
+      {...args}
       onClick={toggle}
-      color={args.color}
     />
   );
 };
 
-export const SimpleBurger = Template.bind({});
-
-SimpleBurger.args = {
+Default.args = {
   size: "md",
   transitionDuration: 100,
   color: "#000000"

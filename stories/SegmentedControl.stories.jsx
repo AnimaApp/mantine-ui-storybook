@@ -15,13 +15,17 @@ export default {
     disabled: { description: "Disabled", type: "boolean" },
     orientation: {
       description: "Orientation",
-      control: { type: "select" },
-      options: ["horizontal", "vertical"],
+      control: {
+        type: "select",
+        options: ["horizontal", "vertical"],
+      },
     },
     size: {
       description: "Size",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     defaultValue: { description: "Default value", type: "string" },
   },
@@ -34,24 +38,19 @@ const data = [
   { label: "Svelte", value: "svelte" },
 ];
 
-const Template = (args) => {
+export const Default = (args) => {
   const [value, setValue] = React.useState(args.defaultValue);
 
   return (
     <MantineCore.SegmentedControl
+      {...args}
       value={value}
       onChange={setValue}
-      disabled={args.disabled}
-      orientation={args.orientation}
-      size={args.size}
-      data={args.data}
     />
   );
 };
 
-export const SimpleSegmentedControl = Template.bind({});
-
-SimpleSegmentedControl.args = {
+Default.args = {
   disabled: false,
   orientation: "horizontal",
   size: "md",

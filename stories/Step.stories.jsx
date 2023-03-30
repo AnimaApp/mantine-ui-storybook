@@ -30,25 +30,17 @@ export default {
   },
 };
 
-const Template = (args) => {
+export const Default = (args) => {
   return (
     <MantineCore.Stepper.Step
-      allowStepClick={args.allowStepClick}
-      orientation={args.orientation}
-      size={args.size}
-      state={args.state}
-      withIcon={args.withIcon}
-      label={args.label}
-      description={args.description}
+      {...args}
     >
       {args.label}
     </MantineCore.Stepper.Step>
   );
 };
 
-export const SimpleStep = Template.bind({});
-
-SimpleStep.args = {
+Default.args = {
   allowStepClick: true,
   orientation: "horizontal",
   size: "md",
@@ -58,7 +50,7 @@ SimpleStep.args = {
   description: "Description"
 };
 
-SimpleStep.storyInfo = {
+Default.storyInfo = {
   name: "SimpleStep",
   kind: "Mantine UI/Step",
 };

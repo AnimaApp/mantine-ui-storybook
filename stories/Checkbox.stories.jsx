@@ -1,5 +1,6 @@
 import React from "react";
 import * as MantineCore from "@mantine/core";
+import {color} from "../src/colors";
 
 export default {
   title: "Mantine UI/Checkbox",
@@ -17,37 +18,41 @@ export default {
     indeterminate: { description: "Indeterminate", type: "boolean" },
     size: {
       description: "Size",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     disabled: { description: "Disabled", type: "boolean" },
     value: { description: "Value", type: "string" },
+    color: {
+      description: "Color",
+      control: {
+        type: "select",
+        options: color,
+      },
+    },
   },
 };
 
-const Template = (args) => {
+export const Default = (args) => {
   return (
     <MantineCore.Checkbox
-      label={args.label}
-      indeterminate={args.indeterminate}
-      size={args.size}
-      disabled={args.disabled}
-      value={args.value}
+      {...args}
     />
   );
 };
 
-export const SimpleCheckbox = Template.bind({});
-
-SimpleCheckbox.args = {
+Default.args = {
   label: "Label",
   indeterminate: false,
   size: "md",
   disabled: false,
-  value: "react"
+  value: "react",
+  color: "blue",
 };
 
-SimpleCheckbox.storyInfo = {
-  name: "SimpleCheckbox",
+Default.storyInfo = {
+  name: "Checkbox",
   kind: "Mantine UI/Checkbox",
 };

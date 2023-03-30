@@ -14,38 +14,39 @@ export default {
   argTypes: {
     size: {
       description: "Size",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     src: { description: "src", type: "string" },
     variant: {
       description: "Variant",
-      control: { type: "select" },
-      options: ["outline", "light", "filled", "gradient"],
+      control: {
+        type: "select",
+        options: ["outline", "light", "filled", "gradient"],
+      },
     },
     radius: {
       description: "Radius",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
   },
 };
 
-const Template = (args) => {
+export const Default = (args) => {
   return (
     <MantineCore.Avatar
+      {...args}
       alt={args.src? " " : "no image here"}
-      size={args.size}
-      src={args.src}
-      variant={args.variant}
-      radius={args.radius}
     />
   );
 };
 
-export const SimpleAvatar = Template.bind({});
-
-SimpleAvatar.args = {
+Default.args = {
   size: "md",
   src: "https://joeschmoe.io/api/v1/random",
   variant: "outline",

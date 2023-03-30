@@ -25,28 +25,36 @@ export default {
     initiallyOpened: { description: "Initially opened", type: "boolean" },
     dropdownPosition: {
       description: "Dropdown position",
-      control: { type: "select" },
-      options: ["bottom", "top", "flip"],
+      control: {
+        type: "select",
+        options: ["bottom", "top", "flip"],
+      }
     },
     limit: { description: "Limit", type: "number" },
     maxDropdownHeight: { description: "Max dropdown height", type: "number" },
     size: {
       description: "Size",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      }
     },
     iconName: {
-      control: { type: "select" },
-      options: iconOptions,
       description: "Icon",
-      transform: iconTransform,
-      required: false,
+      control: {
+        type: "select",
+        options: iconOptions,
+        transform: iconTransform,
+        required: false,
+      },
     },
     iconWidth: { description: "Icon width", type: "number" },
     variant: {
       description: "Variant",
-      control: { type: "select" },
-      options: ["unstyled", "filled", "default"],
+      control: {
+        type: "select",
+        options: ["unstyled", "filled", "default"],
+      },
     },
     width: { description: "Width", type: "string" },
     defaultValue: { description: "Default value", type: "string" },
@@ -61,7 +69,7 @@ const data = [
   {value:"Vue"},
 ];
 
-const Template = (args) => {
+export const Default = (args) => {
   const [value, setValue] = React.useState(args.defaultValue);
 
   return (
@@ -87,9 +95,7 @@ const Template = (args) => {
   );
 };
 
-export const SimpleAutocomplete = Template.bind({});
-
-SimpleAutocomplete.args = {
+Default.args = {
   label: "Label",
   description: "Description",
   error: "",

@@ -19,17 +19,19 @@ export default {
     value: { description: "Value", type: "string" },
     label: { description: "Label", type: "string" },
     iconName: {
-      control: { type: "select" },
-      options: iconOptions,
       description: "Icon",
-      transform: iconTransform,
-      required: false,
+      control: {
+        type: "select",
+        options: iconOptions,
+        transform: iconTransform,
+        required: false,
+      },
     },
   },
   decorators: [withIconMapped],
 };
 
-const Template = (args) => {
+export const Default = (args) => {
   return (
     <MantineCore.Tabs>
       <MantineCore.Tabs.Tab value={args.value} icon={args.iconName}>
@@ -40,15 +42,13 @@ const Template = (args) => {
   );
 };
 
-export const SimpleTab = Template.bind({});
-
-SimpleTab.args = {
+Default.args = {
   value: "label",
   //   iconName: "Icon2fa",
   label: "Label",
 };
 
-SimpleTab.storyInfo = {
+Default.storyInfo = {
   name: "SimpleTab",
   kind: "Mantine UI/Tab",
 };

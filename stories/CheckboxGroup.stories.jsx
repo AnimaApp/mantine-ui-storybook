@@ -1,6 +1,6 @@
 import React from "react";
 import * as MantineCore from "@mantine/core";
-import { SimpleCheckbox } from "./Checkbox.stories";
+import { Default as SimpleCheckbox } from "./Checkbox.stories";
 
 export default {
   title: "Mantine UI/Checkbox Group",
@@ -16,18 +16,24 @@ export default {
     label: {description: "Label", type: "string"},
     orientation: {
       description: "Orientation",
-      control: { type: "select" },
-      options: ["horizontal", "vertical"],
+      control: {
+        type: "select",
+        options: ["horizontal", "vertical"],
+      },
     },
     offset: {
       description: "Offset",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     spacing: {
       description: "Spacing",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     description: { description: "Description", type: "string" },
     error: { description: "Error", type: "string" },
@@ -51,20 +57,14 @@ export default {
   },
 };
 
-const Template = (args) => {
+export const Default = (args) => {
   const [value, setValue] = React.useState(args.value);
 
   return (
     <MantineCore.Checkbox.Group
-      label={args.label}
-      withAsterisk={args.withAsterisk}
+      {...args}
       value={value}
       onChange={setValue}
-      orientation={args.orientation}
-      offset={args.offset}
-      spacing={args.spacing}
-      description={args.description}
-      error={args.error}
     >
       <SimpleCheckbox {...args.item} />
       <SimpleCheckbox {...args.item2} />
@@ -73,9 +73,7 @@ const Template = (args) => {
   );
 };
 
-export const SimpleCheckboxGroup = Template.bind({});
-
-SimpleCheckboxGroup.args = {
+Default.args = {
   label: "Label",
   withAsterisk: false,
   orientation: "horizontal",

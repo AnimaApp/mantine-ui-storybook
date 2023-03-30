@@ -23,8 +23,10 @@ export default {
     thumbSize: { description: "Thumb size", type: "number" },
     size: {
       description: "Size",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     width: { description: "Width", type: "string" },
     defaultValue: { description: "Default value", type: "number" },
@@ -38,31 +40,20 @@ export default {
   ],
 };
 
-const Template = (args) => {
+export const Default = (args) => {
   const [value, setValue] = React.useState(args.defaultValue);
 
   return (
     <MantineCore.Slider
+      {...args}
       value={value}
       onChange={setValue}
-      label={args.label}
-      disabled={args.disabled}
-      labelAlwaysOn={args.labelAlwaysOn}
-      showLabelOnHover={args.showLabelOnHover}
-      precision={args.precision}
-      min={args.min}
-      max={args.max}
-      step={args.step}
-      thumbSize={args.thumbSize}
-      size={args.size}
       style={{ width: args.width }}
     />
   );
 };
 
-export const SimpleSlider = Template.bind({});
-
-SimpleSlider.args = {
+Default.args = {
   label: "Label",
   disabled: false,
   labelAlwaysOn: false,

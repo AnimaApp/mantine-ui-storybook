@@ -20,8 +20,10 @@ export default {
     },
     radius: {
       description: "Radius",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     visible: { description: "Visible", type: "boolean" },
     width: {
@@ -31,22 +33,13 @@ export default {
   },
 };
 
-const Template = (args) => {
+export const Default = (args) => {
   return (
-    <MantineCore.Skeleton
-      animate={args.animate}
-      circle={args.circle}
-      height={args.height}
-      radius={args.radius}
-      visible={args.visible}
-      width={args.width}
-    />
+    <MantineCore.Skeleton {...args}/>
   );
 };
 
-export const SimpleSkeleton = Template.bind({});
-
-SimpleSkeleton.args = {
+Default.args = {
   animate: true,
   circle: false,
   height: 120,

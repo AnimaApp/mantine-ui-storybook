@@ -22,21 +22,34 @@ export default {
     required: { description: "Required", type: "boolean" },
     size: {
       description: "Size",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     iconName: {
-      control: { type: "select" },
-      options: iconOptions,
       description: "Icon",
-      transform: iconTransform,
-      required: false,
+      control: {
+        type: "select",
+        options: iconOptions,
+        transform: iconTransform,
+        required: false,
+      },
     },
     iconWidth: { description: "Icon width", type: "number" },
     variant: {
       description: "Variant",
-      control: { type: "select" },
-      options: ["unstyled", "filled", "default"],
+      control: {
+        type: "select",
+        options: ["unstyled", "filled", "default"],
+      },
+    },
+    radius: {
+      description: "Radius",
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     width: { description: "Width", type: "string" },
     defaultValue: { description: "Default value", type: "string" },
@@ -47,32 +60,22 @@ export default {
 
 const data = ["React", "Vue", "Angular", "Svelte"];
 
-const Template = (args) => {
+export const Default = (args) => {
   const [value, setValue] = React.useState(args.defaultValue);
 
   return (
     <MantineCore.NativeSelect
+      {...args}
       value={value}
       onChange={(event) => setValue(event.currentTarget.value)}
-      label={args.label}
-      placeholder={args.placeholder}
-      description={args.description}
-      error={args.error}
-      disabled={args.disabled}
-      required={args.required}
-      size={args.size}
       icon={args.iconName}
-      iconWidth={args.iconWidth}
-      variant={args.variant}
       data={data}
       style={{ width: args.width }}
     />
   );
 };
 
-export const SimpleNativeSelect = Template.bind({});
-
-SimpleNativeSelect.args = {
+Default.args = {
   label: "Label",
   placeholder: "Placeholder",
   description: "Description",
@@ -81,6 +84,7 @@ SimpleNativeSelect.args = {
   required: false,
   size: "md",
   variant: "filled",
+  radius: "sm",
   width: "300px",
   defaultValue: "React",
 };

@@ -22,28 +22,34 @@ export default {
     multiline: { description: "Multiline", type: "boolean" },
     size: {
       description: "Size",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     iconName: {
-      control: { type: "select" },
-      options: iconOptions,
       description: "Icon",
-      transform: iconTransform,
-      required: false,
+      control: {
+        type: "select",
+        options: iconOptions,
+        transform: iconTransform,
+        required: false,
+      },
     },
     iconWidth: { description: "Icon width", type: "number" },
     variant: {
       description: "Variant",
-      control: { type: "select" },
-      options: ["unstyled", "filled", "default"],
+      control: {
+        type: "select",
+        options: ["unstyled", "filled", "default"],
+      },
     },
     width: { description: "Width", type: "string" },
   },
   decorators: [withIconMapped],
 };
 
-const Template = (args) => {
+export const Default = (args) => {
   const [value, setValue] = React.useState("");
   return (
     <MantineCore.TextInput
@@ -64,9 +70,7 @@ const Template = (args) => {
   );
 };
 
-export const SimpleTextInput = Template.bind({});
-
-SimpleTextInput.args = {
+Default.args = {
   label: "Label",
   description: "Description",
   error: "",

@@ -8,19 +8,25 @@ export default {
   argTypes: {
     iconPosition: {
       description: "Icon Position",
-      control: { type: "select" },
-      options: ["left", "right"],
+      control: {
+        type: "select",
+        options: ["left", "right"],
+      },
     },
     iconSize: { description: "Icon Size", type: "number" },
     size: {
       description: "Size",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     radius: {
       description: "Radius",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     active: { description: "Active", type: "number" },
     value: { description: "Value", type: "number" },
@@ -44,7 +50,7 @@ const styleText = {
   justifyContent: "center"
 };
 
-const Template = (args) => {
+export const Default = (args) => {
   const [active, setActive] = React.useState(1);
   const nextStep = () => setActive((current) => (current < 3 ? current + 1 : current));
   const prevStep = () => setActive((current) => (current > 0 ? current - 1 : current));
@@ -53,10 +59,7 @@ const Template = (args) => {
   return (
     <>
       <MantineCore.Stepper
-        iconPosition={args.iconPosition}
-        iconSize={args.iconSize}
-        size={args.size}
-        radius={args.radius}
+        {...args}
         active={active}
         onStepClick={setActive}
       >
@@ -81,9 +84,7 @@ const Template = (args) => {
   );
 };
 
-export const SimpleStepper = Template.bind({});
-
-SimpleStepper.args = {
+Default.args = {
   iconPosition: "left",
   iconSize: 40,
   size: "md",

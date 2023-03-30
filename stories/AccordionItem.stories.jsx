@@ -20,7 +20,7 @@ export default {
   },
 };
 
-const Template = (args) => {
+export const Default = (args) => {
   return (
     <MantineCore.Accordion>
       <MantineCore.Accordion.Item value={args.value}>
@@ -35,15 +35,13 @@ const Template = (args) => {
   );
 };
 
-export const SimpleAccordionItem = Template.bind({});
-
-SimpleAccordionItem.args = {
+Default.args = {
   value: "Value",
   title: "Title",
   description: "Description",
 };
 
-SimpleAccordionItem.storyInfo = {
+Default.storyInfo = {
   name: "SimpleAccordionItem",
   kind: "Mantine UI/Accordion Item",
 };

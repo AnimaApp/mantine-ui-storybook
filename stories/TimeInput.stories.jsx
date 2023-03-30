@@ -23,52 +23,47 @@ export default {
     multiline: { description: "Multiline", type: "boolean" },
     size: {
       description: "Size",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     iconName: {
-      control: { type: "select" },
-      options: iconOptions,
-      description: "Icon",
-      transform: iconTransform,
-      required: false,
+      control: {
+        type: "select",
+        options: iconOptions,
+        description: "Icon",
+        transform: iconTransform,
+        required: false,
+      },
     },
     iconWidth: { description: "Icon width", type: "number" },
     variant: {
       description: "Variant",
-      control: { type: "select" },
-      options: ["unstyled", "filled", "default"],
+      control: {
+        type: "select",
+        options: ["unstyled", "filled", "default"],
+      },
     },
     width: { description: "Width", type: "string" },
   },
   decorators: [withIconMapped],
 };
 
-const Template = (args) => {
+export const Default = (args) => {
   const [value, setValue] = React.useState();
   return (
     <MantineDates.TimeInput
+      {...args}
       value={value}
       onChange={setValue}
-      label={args.label}
-      placeholder={args.placeholder}
-      description={args.description}
-      error={args.error}
-      disabled={args.disabled}
-      required={args.required}
-      multiline={args.multiline}
-      size={args.size}
       icon={args.iconName}
-      iconWidth={args.iconWidth}
-      variant={args.variant}
       style={{ width: args.width }}
     />
   );
 };
 
-export const SimpleTimeInput = Template.bind({});
-
-SimpleTimeInput.args = {
+Default.args = {
   label: "Label",
   placeholder: "Placeholder",
   description: "Description",

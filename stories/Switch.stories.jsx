@@ -15,33 +15,37 @@ export default {
     label: { description: "Label", type: "string" },
     offLabel: { description: "Off label", type: "string" },
     onLabel: { description: "On label", type: "string" },
+    radius: {
+      description: "Radius",
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
+    },
     size: {
       description: "Size",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     // thumbIcon: to do
   },
 };
 
-const Template = (args) => {
+export const Default = (args) => {
   return (
     <MantineCore.Switch
-      label={args.label}
-      offLabel={args.offLabel}
-      onLabel={args.onLabel}
-      size={args.size}
-      thumbIcon={args.thumbIcon}
+      {...args}
     />
   );
 };
 
-export const SimpleSwitch = Template.bind({});
-
-SimpleSwitch.args = {
+Default.args = {
   label: "Label",
   offLabel: "",
   onLabel: "onLabel",
   size: "md",
+  radius: "xl",
   // thumbIcon: to do
 };

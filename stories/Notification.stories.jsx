@@ -15,34 +15,41 @@ export default {
   },
   argTypes: {
     iconName: {
-      control: { type: "select" },
-      options: iconOptions,
       description: "Icon",
-      transform: iconTransform,
-      required: false,
+      control: {
+        type: "select",
+        options: iconOptions,
+        transform: iconTransform,
+        required: false,
+      },
     },
-    loading: { description: "Loading", type: "boolean" },
+    color: {
+      description: "Color",
+      control: {
+        type: "color",
+      },
+    },
     radius: {
       description: "Radius",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     title: { description: "Title", type: "string" },
-    disallowClose: { description: "Disallow close", type: "boolean" },
     description: { description: "Description", type: "string" },
     width: { description: "Width", type: "string" },
+    disallowClose: { description: "Disallow close", type: "boolean" },
+    loading: { description: "Loading", type: "boolean" },
   },
   decorators: [withIconMapped],
 };
 
-const Template = (args) => {
+export const Default = (args) => {
   return (
     <MantineCore.Notification
+      {...args}
       icon={args.iconName}
-      loading={args.loading}
-      radius={args.radius}
-      title={args.title}
-      disallowClose={args.disallowClose}
       style={{ width: args.width }}
     >
       {args.description}
@@ -50,9 +57,7 @@ const Template = (args) => {
   );
 };
 
-export const SimpleNotification = Template.bind({});
-
-SimpleNotification.args = {
+Default.args = {
   iconName: "IconCheck",
   loading: false,
   radius: "md",
