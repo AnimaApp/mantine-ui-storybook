@@ -1,6 +1,6 @@
 import React from "react";
 import * as MantineCore from "@mantine/core";
-import { SimpleChip } from "./Chip.stories";
+import { Default as SimpleChip } from "./Chip.stories";
 
 export default {
   title: "Mantine UI/Chip Group",
@@ -15,14 +15,18 @@ export default {
   argTypes: {
     spacing: {
       description: "Spacing",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     multiple: { description: "Multiple", type: "boolean" },
     position: {
       description: "Position",
-      control: { type: "select" },
-      options: ["left", "right", "center", "apart"],
+      control: {
+        type: "select",
+        options: ["left", "right", "center", "apart"],
+      },
     },
     value: { description: "Value", type: "string" },
     item: {
@@ -43,7 +47,7 @@ export default {
   },
 };
 
-const Template = (args) => {
+export const Default = (args) => {
   const [value, setValue] = React.useState(args.value);
 
   return (
@@ -60,9 +64,8 @@ const Template = (args) => {
     </MantineCore.Chip.Group>
   );
 };
-export const SimpleChipGroup = Template.bind({});
 
-SimpleChipGroup.args = {
+Default.args = {
   spacing: "md",
   multiple: false,
   position: "left",

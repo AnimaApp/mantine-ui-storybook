@@ -13,14 +13,8 @@ export default {
   },
   argTypes: {
     label: { description: "Label", type: "string" },
-    size: {
-      description: "Size",
-      type: "number",
-    },
-    thickness: {
-      description: "Thickness",
-      type: "number",
-    },
+    size: { description: "Size", type: "number" },
+    thickness: { description: "Thickness", type: "number" },
     roundCaps: { description: "RoundCaps", type: "boolean" },
     sections: { description: "Sections", type: "array" },
   },
@@ -32,21 +26,16 @@ const sections = [
   { value: 15, color: "grape" },
 ];
 
-const Template = (args) => {
+export const Default = (args) => {
   return (
     <MantineCore.RingProgress
+      {...args}
       label={<div style={{ textAlign: "center" }}>{args.label}</div>}
-      size={args.size}
-      thickness={args.thickness}
-      roundCaps={args.roundCaps}
-      sections={args.sections}
     />
   );
 };
 
-export const SimpleRingProgress = Template.bind({});
-
-SimpleRingProgress.args = {
+Default.args = {
   label: "Label",
   size: 120,
   thickness: 10,

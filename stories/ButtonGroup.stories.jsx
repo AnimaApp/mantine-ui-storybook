@@ -1,6 +1,6 @@
 import React from "react";
 import * as MantineCore from "@mantine/core";
-import { SimpleButton } from "./Button.stories";
+import { Default as SimpleButton } from "./Button.stories";
 
 export default {
   title: "Mantine UI/Button Group",
@@ -15,8 +15,10 @@ export default {
   argTypes: {
     orientation: {
       description: "Orientation",
-      control: { type: "select" },
-      options: ["horizontal", "vertical"],
+      control: {
+        type: "select",
+        options: ["horizontal", "vertical"],
+      },
     },
     buttonBorderWidth: { description: "Button border width", type: "number" },
     item: {
@@ -37,11 +39,10 @@ export default {
   },
 };
 
-const Template = (args) => {
+export const Default = (args) => {
   return (
     <MantineCore.Button.Group
-      orientation={args.orientation}
-      buttonBorderWidth={args.buttonBorderWidth}
+      {...args}
     >
       <SimpleButton {...args.item} />
       <SimpleButton {...args.item2} />
@@ -50,9 +51,7 @@ const Template = (args) => {
   );
 };
 
-export const SimpleButtonGroup = Template.bind({});
-
-SimpleButtonGroup.args = {
+Default.args = {
   orientation: "horizontal",
   buttonBorderWidth: 1,
   item: {
@@ -72,7 +71,7 @@ SimpleButtonGroup.args = {
   },
 };
 
-SimpleButtonGroup.storyInfo = {
+Default.storyInfo = {
   name: "SimpleButtonGroup",
   kind: "Mantine UI/Button Group",
 };

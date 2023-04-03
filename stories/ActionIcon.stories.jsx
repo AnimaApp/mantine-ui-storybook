@@ -16,28 +16,34 @@ export default {
   argTypes: {
     variant: {
       description: "Variant",
-      control: { type: "select" },
-      options: [
-        "outline",
-        "white",
-        "light",
-        "default",
-        "filled",
-        "subtle",
-        "gradient",
-      ],
+      control: {
+        type: "select",
+        options: [
+          "outline",
+          "white",
+          "light",
+          "default",
+          "filled",
+          "subtle",
+          "gradient",
+        ],
+      },
     },
     iconName: {
-      control: { type: "select" },
-      options: iconOptions,
       description: "Icon",
-      transform: iconTransform,
-      required: false,
+      control: {
+        type: "select",
+        options: iconOptions,
+        transform: iconTransform,
+        required: false,
+      },
     },
     size: {
       description: "Size",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     loading: { description: "Loading", type: "boolean" },
     disabled: { description: "Disabled", type: "boolean" },
@@ -45,23 +51,18 @@ export default {
   decorators: [withIconMapped],
 };
 
-const Template = (args) => {
+export const Default = (args) => {
   return (
     <MantineCore.ActionIcon
-      variant={args.variant}
+      {...args}
       icon={args.iconName}
-      size={args.size}
-      loading={args.loading}
-      disabled={args.disabled}
     >
       {args.iconName && args.iconName}
     </MantineCore.ActionIcon>
   );
 };
 
-export const SimpleActionIcon = Template.bind({});
-
-SimpleActionIcon.args = {
+Default.args = {
   variant: "default",
   iconName: "IconAdjustments",
   size: "md",
@@ -69,7 +70,7 @@ SimpleActionIcon.args = {
   disabled: false,
 };
 
-SimpleActionIcon.storyInfo = {
+Default.storyInfo = {
   name: "SimpleActionIcon",
   kind: "Mantine UI/Action Icon",
 };

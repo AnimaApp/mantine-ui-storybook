@@ -21,20 +21,26 @@ export default {
     disabled: { description: "Disabled", type: "boolean" },
     size: {
       description: "Size",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     format: {
       description: "Format",
-      control: { type: "select" },
-      options: ["hex", "rgba", "rgb", "hsl", "hsla"],
+      control: {
+        type: "select",
+        options: ["hex", "rgba", "rgb", "hsl", "hsla"],
+      },
     },
     iconName: {
-      control: { type: "select" },
-      options: iconOptions,
       description: "Icon",
-      transform: iconTransform,
-      required: false,
+      control: {
+        type: "select",
+        options: iconOptions,
+        transform: iconTransform,
+        required: false,
+      },
     },
     iconWidth: { description: "Icon width", type: "number" },
     withPicker: { description: "With picker", type: "boolean" },
@@ -45,8 +51,10 @@ export default {
     defaultValue: { description: "Default value", type: "string" },
     variant: {
       description: "Variant",
-      control: { type: "select" },
-      options: ["unstyled", "default", "filled"],
+      control: {
+        type: "select",
+        options: ["unstyled", "default", "filled"],
+      },
     },
     width: { description: "Width", type: "string" },
   },
@@ -54,36 +62,24 @@ export default {
 };
 
 const colorSwatches = ['#25262b', '#868e96', '#fa5252', '#e64980', '#be4bdb', '#7950f2', '#4c6ef5'];
-const Template = (args) => {
+
+export const Default = (args) => {
   const [value, setValue] = React.useState(args.defaultValue);
 
   return (
     <MantineCore.ColorInput
       value={value}
       onChange={setValue}
-      label={args.label}
-      description={args.description}
-      error={args.error}
-      required={args.required}
-      disabled={args.disabled}
-      size={args.size}
-      format={args.format}
+      {...args}
       icon={args.iconName}
       iconWidth={args.iconWidth}
-      withPicker={args.withPicker}
-      withPreview={args.withPreview}
-      withinPortal={args.withinPortal}
       swatches={args.swatches && colorSwatches}
-      swatchesPerRow={args.swatchesPerRow}
-      variant={args.variant}
       style={{ width: args.width }}
     />
   );
 };
 
-export const SimpleColorInput = Template.bind({});
-
-SimpleColorInput.args = {
+Default.args = {
   label: "Label",
   description: "",
   error: "",
@@ -96,7 +92,7 @@ SimpleColorInput.args = {
   withPreview: true,
   withinPortal: false,
   swatches: "",
-  swatchesPerRow: 1,
+  swatchesPerRow: 10,
   variant: "default",
   width: "300px",
   defaultValue: "#C5D899",

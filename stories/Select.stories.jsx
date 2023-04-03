@@ -23,29 +23,37 @@ export default {
     initiallyOpened: { description: "Initially opened", type: "boolean" },
     dropdownPosition: {
       description: "Dropdown position",
-      control: { type: "select" },
-      options: ["bottom", "top", "flip"],
+      control: {
+        type: "select",
+        options: ["bottom", "top", "flip"],
+      },
     },
     limit: { description: "Limit", type: "number" },
     maxDropdownHeight: { description: "Max dropdown height", type: "number" },
     searchable: { description: "Searchable", type: "boolean" },
     size: {
       description: "Size",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     iconName: {
-      control: { type: "select" },
-      options: iconOptions,
       description: "Icon",
-      transform: iconTransform,
-      required: false,
+      control: {
+        type: "select",
+        options: iconOptions,
+        transform: iconTransform,
+        required: false,
+      },
     },
     iconWidth: { description: "Icon width", type: "number" },
     variant: {
       description: "Variant",
-      control: { type: "select" },
-      options: ["unstyled", "filled", "default"],
+      control: {
+        type: "select",
+        options: ["unstyled", "filled", "default"],
+      },
     },
     width: { description: "Width", type: "string" },
   },
@@ -80,37 +88,21 @@ const data = [
   },
 ];
 
-const Template = (args) => {
+export const Default = (args) => {
   const [value, setValue] = React.useState("");
 
   return (
     <MantineCore.Select
+      {...args}
       value={value}
       onChange={setValue}
-      label={args.label}
-      description={args.description}
-      error={args.error}
-      disabled={args.disabled}
-      required={args.required}
-      clearable={args.clearable}
-      initiallyOpened={args.initiallyOpened}
-      dropdownPosition={args.dropdownPosition}
-      limit={args.limit}
-      maxDropdownHeight={args.maxDropdownHeight}
-      searchable={args.searchable}
-      size={args.size}
       icon={args.iconName}
-      iconWidth={args.iconWidth}
-      variant={args.variant}
-      data={args.data}
       style={{ width: args.width }}
     />
   );
 };
 
-export const SimpleSelect = Template.bind({});
-
-SimpleSelect.args = {
+Default.args = {
   label: "Label",
   description: "Description",
   error: "",

@@ -1,6 +1,6 @@
 import React from "react";
 import * as MantineCore from "@mantine/core";
-import { SimpleRadio } from "./Radio.stories";
+import { Default as SimpleRadio } from "./Radio.stories";
 
 export default {
   title: "Mantine UI/Radio Group",
@@ -19,23 +19,31 @@ export default {
     required: { description: "Required", type: "boolean" },
     orientation: {
       description: "Orientation",
-      control: { type: "select" },
-      options: ["horizontal", "vertical"],
+      control: {
+        type: "select",
+        options: ["horizontal", "vertical"],
+      },
     },
     size: {
       description: "Size",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     offset: {
       description: "Offset",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     spacing: {
       description: "Spacing",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     value: { description: "Value", type: "string" },
     item: {
@@ -56,21 +64,14 @@ export default {
   },
 };
 
-const Template = (args) => {
+export const Default = (args) => {
   const [value, setValue] = React.useState(args.value);
 
   return (
     <MantineCore.Radio.Group
+      {...args}
       value={value}
       onChange={setValue}
-      label={args.label}
-      description={args.description}
-      error={args.error}
-      required={args.required}
-      orientation={args.orientation}
-      size={args.size}
-      offset={args.offset}
-      spacing={args.spacing}
     >
       <SimpleRadio {...args.item} />
       <SimpleRadio {...args.item2} />
@@ -79,9 +80,7 @@ const Template = (args) => {
   );
 };
 
-export const SimpleRadioGroup = Template.bind({});
-
-SimpleRadioGroup.args = {
+Default.args = {
   label: "Label",
   description: "",
   error: "",

@@ -1,5 +1,6 @@
 import React from "react";
 import * as MantineCore from "@mantine/core";
+import { color } from "@storybook/theming";
 
 export default {
   title: "Mantine UI/Loader",
@@ -12,26 +13,36 @@ export default {
     },
   },
   argTypes: {
+    color: {
+      description: "Color",
+      control: {
+        type: "select",
+        options: color,
+      }
+    },
     size: {
       description: "Size",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     variant: {
       description: "Variant",
-      control: { type: "select" },
-      options: ["bars", "oval", "dots"],
+      control: {
+        type: "select",
+        options: ["bars", "oval", "dots"],
+      },
     },
   },
 };
 
-const Template = (args) => {
-  return <MantineCore.Loader size={args.size} variant={args.variant} />;
+export const Default = (args) => {
+  return <MantineCore.Loader {...args} />;
 };
 
-export const SimpleLoader = Template.bind({});
-
-SimpleLoader.args = {
+Default.args = {
   size: "md",
   variant: "oval",
+  color: "blue",
 };

@@ -17,29 +17,31 @@ export default {
     title: { description: "Title", type: "string" },
     variant: {
       description: "Variant",
-      control: { type: "select" },
-      options: ["outline", "light", "filled"],
+      control: {
+        type: "select",
+        options: ["outline", "light", "filled"],
+      },
     },
     withCloseButton: { description: "With close button", type: "boolean" },
     width: { description: "Width", type: "string" },
     iconName: {
-      control: { type: "select" },
-      options: iconOptions,
       description: "Icon",
-      transform: iconTransform,
-      required: false,
+      control: {
+        type: "select",
+        options: iconOptions,
+        transform: iconTransform,
+        required: false,
+      },
     },
     description: { description: "Description", type: "string" },
   },
   decorators: [withIconMapped],
 };
 
-const Template = (args) => {
+export const Default = (args) => {
   return (
     <MantineCore.Alert
-      title={args.title}
-      variant={args.variant}
-      withCloseButton={args.withCloseButton}
+      {...args}
       icon={args.iconName}
       style={{ width: args.width }}
     >
@@ -48,9 +50,7 @@ const Template = (args) => {
   );
 };
 
-export const SimpleAlert = Template.bind({});
-
-SimpleAlert.args = {
+Default.args = {
   title: "Title",
   variant: "outline",
   withCloseButton: false,

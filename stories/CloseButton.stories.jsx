@@ -1,5 +1,6 @@
 import React from "react";
 import * as MantineCore from "@mantine/core";
+import {color} from "../src/colors";
 
 export default {
   title: "Mantine UI/Close Button",
@@ -17,47 +18,53 @@ export default {
     loading: { description: "Loading", type: "boolean" },
     size: {
       description: "Size",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     variant: {
       description: "Variant",
-      control: { type: "select" },
-      options: [
-        "outline",
-        "transparent",
-        "light",
-        "filled",
-        "default",
-        "subtle",
-      ],
+      control: {
+        type: "select",
+        options: [
+          "outline",
+          "transparent",
+          "light",
+          "filled",
+          "default",
+          "subtle",
+        ],
+      },
+    },
+    color: {
+      description: "Color",
+      control: {
+        type: "select",
+        options: color,
+      },
     },
   },
 };
 
-const Template = (args) => {
+export const Default = (args) => {
   return (
     <MantineCore.CloseButton
-      disabled={args.disabled}
-      iconSize={args.iconSize}
-      loading={args.loading}
-      size={args.size}
-      variant={args.variant}
+      {...args}
     />
   );
 };
 
-export const SimpleCloseButton = Template.bind({});
-
-SimpleCloseButton.args = {
+Default.args = {
   disabled: false,
   iconSize: 20,
   loading: false,
   size: "md",
   variant: "filled",
+  color: "blue",
 };
 
-SimpleCloseButton.storyInfo = {
-  name: "SimpleCloseButton",
+Default.storyInfo = {
+  name: "CloseButton",
   kind: "Mantine UI/Close Button",
 };

@@ -18,13 +18,17 @@ export default {
     animate: { description: "Animate", type: "boolean" },
     radius: {
       description: "Radius",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     size: {
       description: "Size",
-      control: { type: "select" },
-      options: ["xs", "sm", "md", "lg", "xl"],
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
     },
     striped: { description: "Striped", type: "boolean" },
     value: { description: "Value", type: "number" },
@@ -33,23 +37,16 @@ export default {
   decorators: [withIconMapped],
 };
 
-const Template = (args) => {
+export const Default = (args) => {
   return (
     <MantineCore.Progress
-      label={args.label}
-      animate={args.animate}
-      radius={args.radius}
-      size={args.size}
-      striped={args.striped}
-      value={args.value}
+      {...args}
       style={{ width: args.width }}
     />
   );
 };
 
-export const SimpleProgress = Template.bind({});
-
-SimpleProgress.args = {
+Default.args = {
   label: "Label",
   animate: true,
   radius: "md",
