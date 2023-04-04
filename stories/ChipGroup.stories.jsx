@@ -44,7 +44,7 @@ export default {
       description: "item",
       storyInfo: SimpleChip.storyInfo,
     },
-  },
+  }
 };
 
 export const Default = (args) => {
@@ -57,9 +57,9 @@ export const Default = (args) => {
       value={args.multiple? valueMulti : value}
       onChange={args.multiple? setValueMulti : setValue}
     >
-      <MantineCore.Chip value={args.item.value}>{args.item.label}</MantineCore.Chip>
-      <MantineCore.Chip value={args.item2.value}>{args.item2.label}</MantineCore.Chip>
-      <MantineCore.Chip value={args.item3.value}>{args.item3.label}</MantineCore.Chip>
+      <SimpleChip {...args.item}/>
+      <SimpleChip {...args.item2}/>
+      <SimpleChip {...args.item3}/>
     </MantineCore.Chip.Group>
   );
 };
