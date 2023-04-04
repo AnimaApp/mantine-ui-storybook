@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useCallback} from "react";
 import * as MantineCore from "@mantine/core";
 import { Default as SimpleChip } from "./Chip.stories";
 
@@ -21,6 +21,7 @@ export default {
       },
     },
     multiple: { description: "Multiple", type: "boolean" },
+    value: { description: "Value", type: "string" },
     position: {
       description: "Position",
       control: {
@@ -28,7 +29,6 @@ export default {
         options: ["left", "right", "center", "apart"],
       },
     },
-    value: { description: "Value", type: "string" },
     item: {
       type: "story",
       description: "item",
@@ -49,18 +49,17 @@ export default {
 
 export const Default = (args) => {
   const [value, setValue] = React.useState(args.value);
+  const [valueMulti, setValueMulti] = React.useState([args.value]);
 
   return (
     <MantineCore.Chip.Group
-      value={value}
-      onChange={setValue}
-      spacing={args.spacing}
-      multiple={args.multiple}
-      position={args.position}
+      {...args}
+      value={args.multiple? valueMulti : value}
+      onChange={args.multiple? setValueMulti : setValue}
     >
-      <SimpleChip {...args.item} />
-      <SimpleChip {...args.item2} />
-      <SimpleChip {...args.item3} />
+      <MantineCore.Chip value={args.item.value}>{args.item.label}</MantineCore.Chip>
+      <MantineCore.Chip value={args.item2.value}>{args.item2.label}</MantineCore.Chip>
+      <MantineCore.Chip value={args.item3.value}>{args.item3.label}</MantineCore.Chip>
     </MantineCore.Chip.Group>
   );
 };
@@ -69,7 +68,7 @@ Default.args = {
   spacing: "md",
   multiple: false,
   position: "left",
-  value: "vue",
+  value: "react",
   item: {
     ...SimpleChip.args,
     label: "Label 1",
