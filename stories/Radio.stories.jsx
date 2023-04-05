@@ -1,9 +1,9 @@
 import React from "react";
-import * as MantineCore from "@mantine/core";
+import { Radio } from '@mantine/core';
 
 export default {
   title: "Mantine UI/Radio",
-  component: MantineCore.Radio,
+  component: Radio,
   parameters: {
     docs: {
       description: {
@@ -20,13 +20,6 @@ export default {
         options: ["xs", "sm", "md", "lg", "xl"],
       },
     },
-    labelPosition: {
-      description: "Label Position",
-      control: {
-        type: "select",
-        options: ["left", "right"],
-      },
-    },
     label: { description: "Label", type: "string" },
     value: { description: "Value", type: "string" },
     description: { description: "Description", type: "string" },
@@ -36,14 +29,13 @@ export default {
 
 export const Default = (args) => {
   return (
-    <MantineCore.Radio
+    <Radio
       {...args}
     />
   );
 };
 
 Default.args = {
-  labelPosition: "left",
   size: "md",
   label: "Label",
   description: "description",

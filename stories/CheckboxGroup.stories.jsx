@@ -39,25 +39,15 @@ export default {
     error: { description: "Error", type: "string" },
     value: { description: "Value", type: "string" },
     withAsterisk: {description: "With Asterisk", type: "boolean"},
-    item: {
+    items: {
       type: "story",
       description: "item",
-      storyInfo: SimpleCheckbox.storyInfo,
-    },
-    item2: {
-      type: "story",
-      description: "item",
-      storyInfo: SimpleCheckbox.storyInfo,
-    },
-    item3: {
-      type: "story",
-      description: "item",
-      storyInfo: SimpleCheckbox.storyInfo,
     },
   },
 };
 
 export const Default = (args) => {
+  const {items} = args;
   const [value, setValue] = React.useState(args.value);
 
   return (
@@ -66,9 +56,9 @@ export const Default = (args) => {
       value={value}
       onChange={setValue}
     >
-      <SimpleCheckbox {...args.item} />
-      <SimpleCheckbox {...args.item2} />
-      <SimpleCheckbox {...args.item3} />
+      {items.map((item) => (
+        <SimpleCheckbox {...item} />
+      ))}
     </MantineCore.Checkbox.Group>
   );
 };
@@ -82,28 +72,30 @@ Default.args = {
   description: "Description",
   error: "",
   value: ["react"],
-  item: {
-    ...SimpleCheckbox.args,
-    label: "Label 1",
-    indeterminate: false,
-    size: "md",
-    disabled: false,
-    value: "react",
-  },
-  item2: {
-    ...SimpleCheckbox.args,
-    label: "Label 2",
-    indeterminate: false,
-    size: "md",
-    disabled: false,
-    value: "vue",
-  },
-  item3: {
-    ...SimpleCheckbox.args,
-    label: "Label 3",
-    indeterminate: false,
-    size: "md",
-    disabled: false,
-    value: "angular",
-  },
+  items: [
+    {
+      ...SimpleCheckbox.args,
+      label: "Label 1",
+      indeterminate: false,
+      size: "md",
+      disabled: false,
+      value: "react",
+    },
+    {
+      ...SimpleCheckbox.args,
+      label: "Label 2",
+      indeterminate: false,
+      size: "md",
+      disabled: false,
+      value: "vue",
+    },
+    {
+      ...SimpleCheckbox.args,
+      label: "Label 3",
+      indeterminate: false,
+      size: "md",
+      disabled: false,
+      value: "angular",
+    }
+  ]
 };

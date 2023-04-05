@@ -19,6 +19,13 @@ export default {
         options: ["outline", "default", "pills"],
       },
     },
+    radius: {
+      description: "Radius",
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
+    },
     orientation: {
       description: "Orientation",
       control: {
@@ -28,15 +35,7 @@ export default {
     },
     value: { description: "Value", type: "string" },
     defaultValue: { description: "Default value", type: "string" },
-    item: {
-      type: "story",
-      description: "item",
-    },
-    item2: {
-      type: "story",
-      description: "item",
-    },
-    item3: {
+    items: {
       type: "story",
       description: "item",
     },
@@ -52,6 +51,7 @@ const Tab = (args) => {
 };
 
 export const Default = (args) => {
+  const { items } = args;
   const [activeTab, setActiveTab] = React.useState(args.defaultValue);
 
   return (
@@ -60,9 +60,12 @@ export const Default = (args) => {
       value={activeTab}
       onTabChange={setActiveTab}
     >
-      <Tab {...args.item} />
-      <Tab {...args.item2} />
-      <Tab {...args.item3} />
+      <MantineCore.Tabs.List>
+        {items.map((item) => (
+          <Tab {...item} />
+        ))}
+      </MantineCore.Tabs.List>
+
     </MantineCore.Tabs>
   );
 };
@@ -71,19 +74,22 @@ Default.args = {
   variant: "pills",
   orientation: "vertical",
   defaultValue: "tab1",
-  item: {
-    ...Tab.args,
-    value: "tab1",
-    label: "Tab 1",
-  },
-  item2: {
-    ...Tab.args,
-    value: "tab2",
-    label: "Tab 2",
-  },
-  item3: {
-    ...Tab.args,
-    value: "tab3",
-    label: "Tab 3",
-  },
+  radius: "sm",
+  items: [
+    {
+      ...Tab.args,
+      value: "tab1",
+      label: "Tab 1",
+    },
+    {
+      ...Tab.args,
+      value: "tab2",
+      label: "Tab 2",
+    },
+    {
+      ...Tab.args,
+      value: "tab3",
+      label: "Tab 3",
+    }
+  ]
 };
