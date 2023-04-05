@@ -101,7 +101,7 @@ Default.args = {
   error: "",
   disabled: false,
   required: false,
-  initiallyOpened: false,
+  initiallyOpened: true,
   dropdownPosition: "bottom",
   limit: 100,
   maxDropdownHeight: 400,
