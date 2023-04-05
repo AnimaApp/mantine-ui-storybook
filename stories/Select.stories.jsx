@@ -109,7 +109,7 @@ Default.args = {
   disabled: false,
   required: false,
   clearable: false,
-  initiallyOpened: false,
+  initiallyOpened: true,
   dropdownPosition: "bottom",
   limit: 100,
   maxDropdownHeight: 500,

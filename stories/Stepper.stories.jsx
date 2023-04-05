@@ -30,17 +30,9 @@ export default {
     },
     active: { description: "Active", type: "number" },
     value: { description: "Value", type: "number" },
-    item: {
+    items: {
       type: "story",
-      description: "item",
-    },
-    item2: {
-      type: "story",
-      description: "item",
-    },
-    item3: {
-      type: "story",
-      description: "item",
+      description: "Items",
     },
   },
 };
@@ -51,6 +43,7 @@ const styleText = {
 };
 
 export const Default = (args) => {
+  const { items } = args;
   const [active, setActive] = React.useState(1);
   const nextStep = () => setActive((current) => (current < 3 ? current + 1 : current));
   const prevStep = () => setActive((current) => (current > 0 ? current - 1 : current));
@@ -63,18 +56,16 @@ export const Default = (args) => {
         active={active}
         onStepClick={setActive}
       >
-        <MantineCore.Stepper.Step {...args.item}>
-          <div style={styleText}>{args.item.text}</div>
-        </MantineCore.Stepper.Step>
-        <MantineCore.Stepper.Step {...args.item2}>
-          <div style={styleText}>{args.item2.text}</div>
-        </MantineCore.Stepper.Step>
-        <MantineCore.Stepper.Step {...args.item3}>
-          <div style={styleText}>{args.item3.text}</div>
-        </MantineCore.Stepper.Step>
-        <MantineCore.Stepper.Completed>
-          <div style={styleText}>{args.item4.text}</div>
-        </MantineCore.Stepper.Completed>
+        {items.map((item, index) => (
+          items.length -1 === index ?
+            <MantineCore.Stepper.Completed>
+              <div style={styleText}>{item.text}</div>
+            </MantineCore.Stepper.Completed>
+            :
+            <MantineCore.Stepper.Step {...item}>
+              <div style={styleText}>{item.text}</div>
+            </MantineCore.Stepper.Step>
+        ))}
       </MantineCore.Stepper>
       <MantineCore.Group position="center" mt="xl">
         <MantineCore.Button variant="default" onClick={prevStep}>Back</MantineCore.Button>
@@ -90,22 +81,24 @@ Default.args = {
   size: "md",
   radius: "xl",
   active: 1,
-  item: {
-    label: "Step 1",
-    description: "description",
-    text: "Step 1 content: Create an account",
-  },
-  item2: {
-    label: "Step 2",
-    description: "description",
-    text: "Step 2 content: Verify email",
-  },
-  item3: {
-    label: "Step 3",
-    description: "description",
-    text: "Step 3 content: Get full access",
-  },
-  item4: {
-    text: "Completed, click back button to get to previous step",
-  },
+  items: [
+    {
+      label: "Step 1",
+      description: "description",
+      text: "Step 1 content: Create an account",
+    },
+    {
+      label: "Step 2",
+      description: "description",
+      text: "Step 2 content: Verify email",
+    },
+    {
+      label: "Step 3",
+      description: "description",
+      text: "Step 3 content: Get full access",
+    },
+    {
+      text: "Completed, click back button to get to previous step",
+    }
+  ]
 };

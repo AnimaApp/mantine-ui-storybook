@@ -46,25 +46,15 @@ export default {
       },
     },
     value: { description: "Value", type: "string" },
-    item: {
+    items: {
       type: "story",
-      description: "item",
-      storyInfo: SimpleRadio.storyInfo,
-    },
-    item2: {
-      type: "story",
-      description: "item",
-      storyInfo: SimpleRadio.storyInfo,
-    },
-    item3: {
-      type: "story",
-      description: "item",
-      storyInfo: SimpleRadio.storyInfo,
+      description: "Items",
     },
   },
 };
 
 export const Default = (args) => {
+  const { items } = args;
   const [value, setValue] = React.useState(args.value);
 
   return (
@@ -73,9 +63,9 @@ export const Default = (args) => {
       value={value}
       onChange={setValue}
     >
-      <SimpleRadio {...args.item} />
-      <SimpleRadio {...args.item2} />
-      <SimpleRadio {...args.item3} />
+      {items.map((item) => (
+        <SimpleRadio {...item} />
+      ))}
     </MantineCore.Radio.Group>
   );
 };
@@ -90,19 +80,21 @@ Default.args = {
   offset: "md",
   spacing: "md",
   value: "react",
-  item: {
-    ...SimpleRadio.args,
-    label: "Radio 1",
-    value: "react",
-  },
-  item2: {
-    ...SimpleRadio.args,
-    label: "Radio 2",
-    value: "vue",
-  },
-  item3: {
-    ...SimpleRadio.args,
-    label: "Radio 3",
-    value: "angular",
-  },
+  items: [
+    {
+      ...SimpleRadio.args,
+      label: "Radio 1",
+      value: "react",
+    },
+    {
+      ...SimpleRadio.args,
+      label: "Radio 2",
+      value: "vue",
+    },
+    {
+      ...SimpleRadio.args,
+      label: "Radio 3",
+      value: "angular",
+    }
+  ]
 };
