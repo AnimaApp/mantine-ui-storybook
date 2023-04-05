@@ -18,8 +18,7 @@ export default {
     description: { description: "Description", type: "string" },
     error: { description: "Error", type: "string" },
     disabled: { description: "Disabled", type: "boolean" },
-    required: { description: "Required", type: "boolean" },
-    multiline: { description: "Multiline", type: "boolean" },
+    withAsterisk: { description: "With Asterisk", type: "boolean" },
     size: {
       description: "Size",
       control: {
@@ -36,12 +35,28 @@ export default {
         required: false,
       },
     },
+    rightIcon: {
+      description: "Right  Icon",
+      control: {
+        type: "select",
+        options: iconOptions,
+        transform: iconTransform,
+        required: false,
+      },
+    },
     iconWidth: { description: "Icon width", type: "number" },
     variant: {
       description: "Variant",
       control: {
         type: "select",
         options: ["unstyled", "filled", "default"],
+      },
+    },
+    radius: {
+      description: "Radius",
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
       },
     },
     width: { description: "Width", type: "string" },
@@ -53,18 +68,11 @@ export const Default = (args) => {
   const [value, setValue] = React.useState("");
   return (
     <MantineCore.TextInput
+      {...args}
       value={value}
       onChange={(event) => setValue(event.currentTarget.value)}
-      label={args.label}
-      description={args.description}
-      error={args.error}
-      disabled={args.disabled}
-      required={args.required}
-      multiline={args.multiline}
-      size={args.size}
       icon={args.iconName}
-      iconWidth={args.iconWidth}
-      variant={args.variant}
+      rightIcon={args.rightIcon}
       style={{ width: args.width }}
     />
   );
@@ -75,9 +83,9 @@ Default.args = {
   description: "Description",
   error: "",
   disabled: false,
-  required: false,
-  multiline: false,
+  withAsterisk: true,
   size: "md",
+  radius: "md",
   iconWidth: 20,
   variant: "filled",
   width: "300px",

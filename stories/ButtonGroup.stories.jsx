@@ -21,32 +21,23 @@ export default {
       },
     },
     buttonBorderWidth: { description: "Button border width", type: "number" },
-    item: {
+    items: {
       type: "story",
-      description: "item",
-      storyInfo: SimpleButton.storyInfo,
-    },
-    item2: {
-      type: "story",
-      description: "item",
-      storyInfo: SimpleButton.storyInfo,
-    },
-    item3: {
-      type: "story",
-      description: "item",
-      storyInfo: SimpleButton.storyInfo,
+      description: "Items",
     },
   },
 };
 
 export const Default = (args) => {
+  const {items} = args;
+
   return (
     <MantineCore.Button.Group
       {...args}
     >
-      <SimpleButton {...args.item} />
-      <SimpleButton {...args.item2} />
-      <SimpleButton {...args.item3} />
+      {items.map((item) => (
+        <SimpleButton {...item} />
+      ))}
     </MantineCore.Button.Group>
   );
 };
@@ -54,21 +45,23 @@ export const Default = (args) => {
 Default.args = {
   orientation: "horizontal",
   buttonBorderWidth: 1,
-  item: {
-    ...SimpleButton.args,
-    label: "Button 1",
-    variant: "outline",
-  },
-  item2: {
-    ...SimpleButton.args,
-    label: "Button 2",
-    variant: "outline",
-  },
-  item3: {
-    ...SimpleButton.args,
-    label: "Button 3",
-    variant: "outline",
-  },
+  items: [
+    {
+      ...SimpleButton.args,
+      label: "Button 1",
+      variant: "outline",
+    },
+    {
+      ...SimpleButton.args,
+      label: "Button 2",
+      variant: "outline",
+    },
+    {
+      ...SimpleButton.args,
+      label: "Button 3",
+      variant: "outline",
+    }
+  ]
 };
 
 Default.storyInfo = {

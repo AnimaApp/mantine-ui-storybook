@@ -15,12 +15,10 @@ export default {
   },
   argTypes: {
     label: { description: "Label", type: "string" },
-    placeholder: { description: "Placeholder", type: "string" },
     description: { description: "Description", type: "string" },
     error: { description: "Error", type: "string" },
     disabled: { description: "Disabled", type: "boolean" },
-    required: { description: "Required", type: "boolean" },
-    multiline: { description: "Multiline", type: "boolean" },
+    withAsterisk: { description: "With Asterisk", type: "boolean" },
     size: {
       description: "Size",
       control: {
@@ -45,6 +43,13 @@ export default {
         options: ["unstyled", "filled", "default"],
       },
     },
+    radius: {
+      description: "Radius",
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg", "xl"],
+      },
+    },
     width: { description: "Width", type: "string" },
   },
   decorators: [withIconMapped],
@@ -65,13 +70,12 @@ export const Default = (args) => {
 
 Default.args = {
   label: "Label",
-  placeholder: "Placeholder",
   description: "Description",
   error: "",
   disabled: false,
-  required: false,
-  multiline: false,
+  withAsterisk: true,
   size: "md",
+  radius: "md",
   variant: "default",
   width: "300px",
 };

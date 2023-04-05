@@ -29,25 +29,15 @@ export default {
       },
     },
     value: { description: "Value", type: "string" },
-    item: {
+    items: {
       type: "story",
       description: "item",
-      storyInfo: SimpleChip.storyInfo,
-    },
-    item2: {
-      type: "story",
-      description: "item",
-      storyInfo: SimpleChip.storyInfo,
-    },
-    item3: {
-      type: "story",
-      description: "item",
-      storyInfo: SimpleChip.storyInfo,
     },
   },
 };
 
 export const Default = (args) => {
+  const {items} = args;
   const [value, setValue] = React.useState(args.value);
 
   return (
@@ -58,9 +48,9 @@ export const Default = (args) => {
       multiple={args.multiple}
       position={args.position}
     >
-      <SimpleChip {...args.item} />
-      <SimpleChip {...args.item2} />
-      <SimpleChip {...args.item3} />
+      {items.map((item) => (
+        <SimpleChip {...item} />
+      ))}
     </MantineCore.Chip.Group>
   );
 };
@@ -70,19 +60,21 @@ Default.args = {
   multiple: false,
   position: "left",
   value: "vue",
-  item: {
-    ...SimpleChip.args,
-    label: "Label 1",
-    value: "react",
-  },
-  item2: {
-    ...SimpleChip.args,
-    label: "Label 2",
-    value: "vue",
-  },
-  item3: {
-    ...SimpleChip.args,
-    label: "Label 3",
-    value: "angular",
-  },
+  items: [
+    {
+      ...SimpleChip.args,
+      label: "Label 1",
+      value: "react",
+    },
+    {
+      ...SimpleChip.args,
+      label: "Label 2",
+      value: "vue",
+    },
+    {
+      ...SimpleChip.args,
+      label: "Label 3",
+      value: "angular",
+    }
+  ]
 };
