@@ -30,6 +30,7 @@ export default {
       },
     },
     disabled: { description: "Disabled", type: "boolean" },
+    checked: { description: "Checked", type: "boolean" },
     variant: {
       description: "Variant",
       control: {
@@ -62,6 +63,7 @@ Default.args = {
   label: "Label",
   size: "md",
   radius: "xl",
+  checked: true,
   disabled: false,
   variant: "outline",
   value: "",

@@ -45,6 +45,13 @@ export default {
         options: ["unstyled", "filled", "default"],
       },
     },
+    dropdownType: {
+      description: "Dropdown Type",
+      control: {
+        type: "select",
+        options: ["popover", "modal"],
+      },
+    },
     width: { description: "Width", type: "string" },
   },
   decorators: [withIconMapped],
@@ -76,5 +83,6 @@ Default.args = {
   iconName: "IconCalendar",
   iconWidth: 30,
   variant: "default",
+  dropdownType: "popover",
   width: "300px",
 };

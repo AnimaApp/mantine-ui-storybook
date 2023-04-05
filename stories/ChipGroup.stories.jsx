@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useCallback} from "react";
 import * as MantineCore from "@mantine/core";
 import { Default as SimpleChip } from "./Chip.stories";
 
@@ -21,6 +21,7 @@ export default {
       },
     },
     multiple: { description: "Multiple", type: "boolean" },
+    value: { description: "Value", type: "string" },
     position: {
       description: "Position",
       control: {
@@ -28,25 +29,23 @@ export default {
         options: ["left", "right", "center", "apart"],
       },
     },
-    value: { description: "Value", type: "string" },
     items: {
       type: "story",
       description: "item",
     },
-  },
+  }
 };
 
 export const Default = (args) => {
   const {items} = args;
   const [value, setValue] = React.useState(args.value);
+  const [valueMulti, setValueMulti] = React.useState([args.value]);
 
   return (
     <MantineCore.Chip.Group
-      value={value}
-      onChange={setValue}
-      spacing={args.spacing}
-      multiple={args.multiple}
-      position={args.position}
+      {...args}
+      value={args.multiple? valueMulti : value}
+      onChange={args.multiple? setValueMulti : setValue}
     >
       {items.map((item) => (
         <SimpleChip {...item} />

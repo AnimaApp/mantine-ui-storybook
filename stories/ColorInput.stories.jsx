@@ -42,7 +42,6 @@ export default {
         required: false,
       },
     },
-    iconWidth: { description: "Icon width", type: "number" },
     withPicker: { description: "With picker", type: "boolean" },
     withPreview: { description: "With preview", type: "boolean" },
     withinPortal: { description: "Within portal", type: "boolean" },
@@ -72,7 +71,6 @@ export const Default = (args) => {
       onChange={setValue}
       {...args}
       icon={args.iconName}
-      iconWidth={args.iconWidth}
       swatches={args.swatches && colorSwatches}
       style={{ width: args.width }}
     />
@@ -87,7 +85,6 @@ Default.args = {
   disabled: false,
   size: "md",
   format: "hex",
-  iconWidth: 30,
   withPicker: true,
   withPreview: true,
   withinPortal: false,
