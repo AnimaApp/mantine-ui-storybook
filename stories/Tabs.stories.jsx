@@ -72,7 +72,7 @@ export const Default = (args) => {
 
 Default.args = {
   variant: "pills",
-  orientation: "vertical",
+  orientation: "horizontal",
   defaultValue: "tab1",
   radius: "sm",
   items: [

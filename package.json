@@ -14,9 +14,9 @@
   "devDependencies": {
     "@babel/core": "^7.20.2",
     "@emotion/react": "11.10.4",
-    "@mantine/core": "5.4.1",
-    "@mantine/dates": "5.4.1",
-    "@mantine/hooks": "5.4.1",
+    "@mantine/core": "6.0.10",
+    "@mantine/dates": "6.0.10",
+    "@mantine/hooks": "6.0.10",
     "@storybook/addon-actions": "^6.5.13",
     "@storybook/addon-essentials": "^6.5.13",
     "@storybook/addon-interactions": "^6.5.13",

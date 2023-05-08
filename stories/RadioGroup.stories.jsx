@@ -63,9 +63,11 @@ export const Default = (args) => {
       value={value}
       onChange={setValue}
     >
-      {items.map((item) => (
-        <SimpleRadio {...item} />
-      ))}
+      <MantineCore.Group>
+        {items.map((item) => (
+          <SimpleRadio key={item.value} {...item} />
+        ))}
+      </MantineCore.Group>
     </MantineCore.Radio.Group>
   );
 };

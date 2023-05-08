@@ -21,6 +21,7 @@ export default {
     required: { description: "Required", type: "boolean" },
     clearable: { description: "Clearable", type: "boolean" },
     initiallyOpened: { description: "Initially opened", type: "boolean" },
+    allowDeselect: { description: "Allow deselect", type: "boolean" },
     dropdownPosition: {
       description: "Dropdown position",
       control: {
@@ -110,6 +111,7 @@ Default.args = {
   required: false,
   clearable: false,
   initiallyOpened: true,
+  allowDeselect: false,
   dropdownPosition: "bottom",
   limit: 100,
   maxDropdownHeight: 500,

@@ -47,9 +47,11 @@ export const Default = (args) => {
       value={args.multiple? valueMulti : value}
       onChange={args.multiple? setValueMulti : setValue}
     >
-      {items.map((item) => (
-        <SimpleChip {...item} />
-      ))}
+      <MantineCore.Group spacing={args.spacing} position={args.position}>
+        {items.map((item) => (
+          <SimpleChip {...item} />
+        ))}
+      </MantineCore.Group>
     </MantineCore.Chip.Group>
   );
 };

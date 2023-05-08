@@ -51,6 +51,7 @@ export const Default = (args) => {
       {...args}
       icon={args.iconName}
       style={{ width: args.width }}
+      withCloseButton={args.disallowClose}
     >
       {args.description}
     </MantineCore.Notification>

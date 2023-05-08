@@ -14,20 +14,20 @@ export default {
   },
   argTypes: {
     label: {description: "Label", type: "string"},
-    orientation: {
-      description: "Orientation",
-      control: {
-        type: "select",
-        options: ["horizontal", "vertical"],
-      },
-    },
-    offset: {
-      description: "Offset",
-      control: {
-        type: "select",
-        options: ["xs", "sm", "md", "lg", "xl"],
-      },
-    },
+    // orientation: {
+    //   description: "Orientation",
+    //   control: {
+    //     type: "select",
+    //     options: ["horizontal", "vertical"],
+    //   },
+    // },
+    // offset: {
+    //   description: "Offset",
+    //   control: {
+    //     type: "select",
+    //     options: ["xs", "sm", "md", "lg", "xl"],
+    //   },
+    // },
     spacing: {
       description: "Spacing",
       control: {
@@ -56,9 +56,11 @@ export const Default = (args) => {
       value={value}
       onChange={setValue}
     >
-      {items.map((item) => (
-        <SimpleCheckbox {...item} />
-      ))}
+      <MantineCore.Group spacing={args.spacing} mt="xs">
+        {items.map((item) => (
+          <SimpleCheckbox {...item} />
+        ))}
+      </MantineCore.Group>
     </MantineCore.Checkbox.Group>
   );
 };
@@ -66,8 +68,8 @@ export const Default = (args) => {
 Default.args = {
   label: "Label",
   withAsterisk: false,
-  orientation: "horizontal",
-  offset: "md",
+  // orientation: "horizontal",
+  // offset: "md",
   spacing: "md",
   description: "Description",
   error: "",

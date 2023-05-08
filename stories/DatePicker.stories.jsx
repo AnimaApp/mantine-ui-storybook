@@ -5,7 +5,7 @@ import withIconMapped from "../decorators/withIconMapped";
 
 export default {
   title: "Mantine UI/Date Picker",
-  component: MantineDates.DatePicker,
+  component: MantineDates.DatePickerInput,
   parameters: {
     docs: {
       description: {
@@ -21,6 +21,7 @@ export default {
     disabled: { description: "Disabled", type: "boolean" },
     required: { description: "Required", type: "boolean" },
     multiline: { description: "Multiline", type: "boolean" },
+    clearable: { description: "Clearable", type: "boolean" },
     size: {
       description: "Size",
       control: {
@@ -61,7 +62,7 @@ export default {
 export const Default = (args) => {
   const [value, setValue] = React.useState();
   return (
-    <MantineDates.DatePicker
+    <MantineDates.DatePickerInput
       {...args}
       value={value}
       onChange={setValue}
@@ -79,6 +80,7 @@ Default.args = {
   disabled: false,
   required: false,
   multiline: false,
+  clearable: false,
   size: "md",
   iconName: "IconCalendar",
   iconWidth: 30,

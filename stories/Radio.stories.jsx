@@ -38,8 +38,8 @@ export const Default = (args) => {
 Default.args = {
   size: "md",
   label: "Label",
-  description: "description",
-  error: "error",
+  description: "",
+  error: "",
   value: "react",
 };
 
