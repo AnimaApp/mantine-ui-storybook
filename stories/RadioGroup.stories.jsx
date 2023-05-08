@@ -17,13 +17,13 @@ export default {
     description: { description: "Description", type: "string" },
     error: { description: "Error", type: "string" },
     required: { description: "Required", type: "boolean" },
-    orientation: {
-      description: "Orientation",
-      control: {
-        type: "select",
-        options: ["horizontal", "vertical"],
-      },
-    },
+    // orientation: {
+    //   description: "Orientation",
+    //   control: {
+    //     type: "select",
+    //     options: ["horizontal", "vertical"],
+    //   },
+    // },
     size: {
       description: "Size",
       control: {
@@ -31,13 +31,13 @@ export default {
         options: ["xs", "sm", "md", "lg", "xl"],
       },
     },
-    offset: {
-      description: "Offset",
-      control: {
-        type: "select",
-        options: ["xs", "sm", "md", "lg", "xl"],
-      },
-    },
+    // offset: {
+    //   description: "Offset",
+    //   control: {
+    //     type: "select",
+    //     options: ["xs", "sm", "md", "lg", "xl"],
+    //   },
+    // },
     spacing: {
       description: "Spacing",
       control: {
@@ -63,7 +63,7 @@ export const Default = (args) => {
       value={value}
       onChange={setValue}
     >
-      <MantineCore.Group>
+      <MantineCore.Group spacing={args.spacing}>
         {items.map((item) => (
           <SimpleRadio key={item.value} {...item} />
         ))}
@@ -77,9 +77,9 @@ Default.args = {
   description: "",
   error: "",
   required: false,
-  orientation: "horizontal",
+  // orientation: "horizontal",
   size: "md",
-  offset: "md",
+  // offset: "md",
   spacing: "md",
   value: "react",
   items: [
