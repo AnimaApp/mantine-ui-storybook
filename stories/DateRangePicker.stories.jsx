@@ -5,7 +5,7 @@ import withIconMapped from "../decorators/withIconMapped";
 
 export default {
   title: "Mantine UI/Date RangePicker",
-  component: MantineDates.DateRangePicker,
+  component: MantineDates.DatePickerInput,
   parameters: {
     docs: {
       description: {
@@ -51,13 +51,14 @@ export default {
 };
 
 export const Default = (args) => {
-  const [value, onChange] = React.useState(args.defaultValue)
+  const [value, onChange] = React.useState([null, null])
 
   return (
-    <MantineDates.DateRangePicker
+    <MantineDates.DatePickerInput
       {...args}
       value={value}
       onChange={onChange}
+      type="range"
       icon={args.iconName}
       style={{ width: args.width }}
     />
