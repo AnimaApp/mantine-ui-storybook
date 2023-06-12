@@ -48,9 +48,13 @@ export const Default = (args) => {
       onChange={args.multiple? setValueMulti : setValue}
     >
       <MantineCore.Group spacing={args.spacing} position={args.position}>
-        {items.map((item) => (
-          <SimpleChip {...item} />
-        ))}
+        {items.map(({ ...item}) => {
+          const isChecked = args.multiple ? valueMulti.indexOf(item.value) !== -1 : value === item.value;
+
+          return (
+            <SimpleChip {...item} checked={isChecked} />
+          );
+        })}
       </MantineCore.Group>
     </MantineCore.Chip.Group>
   );
@@ -60,7 +64,6 @@ Default.args = {
   spacing: "md",
   multiple: false,
   position: "left",
-  value: "vue",
   items: [
     {
       ...SimpleChip.args,

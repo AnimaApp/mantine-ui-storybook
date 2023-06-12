@@ -4,12 +4,12 @@ import { iconOptions, iconTransform } from "../utils";
 import withIconMapped from "../decorators/withIconMapped";
 
 export default {
-  title: "Mantine UI/Date Picker",
-  component: MantineDates.DatePicker,
+  title: "Mantine UI/Month Picker",
+  component: MantineDates.MonthPicker,
   parameters: {
     docs: {
       description: {
-        component: "DatePicker",
+        component: "MonthPicker",
       },
     },
   },
@@ -30,7 +30,6 @@ export default {
     // },
     width: { description: "Width", type: "string" },
     allowDeselect: { description: "Allow deselect", type: "boolean" },
-    hideWeekdays: { description: "Hide weekdays", type: "boolean" },
   },
   decorators: [withIconMapped],
 };
@@ -39,7 +38,7 @@ export default {
 export const Default = (args) => {
   const [value, setValue] = React.useState();
   return (
-    <MantineDates.DatePicker
+    <MantineDates.MonthPicker
       {...args}
       hasNextLevel={false}
       value={value}
@@ -53,5 +52,4 @@ Default.args = {
   size: "md",
   allowDeselect: false,
   width: "300px",
-  hideWeekdays: false,
 };
